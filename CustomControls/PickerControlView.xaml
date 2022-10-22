@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mauiPopup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
+             x:Class="CustomPickerControl.CustomControls.PickerControlView"
+                         Margin="10,0,10,0"
+             VerticalOptions="Center"      
+             Title="PickerControlView">
+
+
+    <Grid Padding="15,5,15,0" x:Name="grv">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Text="Select Item" FontSize="22" FontAttributes="Bold" />
+
+        <CollectionView Grid.Row="1" 
+                         x:Name="clPickerView"
+                        VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                        SelectionMode="Single"
+                        SelectionChanged="clPickerView_SelectionChanged">
+        </CollectionView>
+    </Grid>
+
+   
+</mauiPopup:BasePopupPage>

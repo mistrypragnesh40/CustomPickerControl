@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customControls="clr-namespace:CustomPickerControl.CustomControls"
+             xmlns:models="clr-namespace:CustomPickerControl.Models"
+             xmlns:viewModel="clr-namespace:CustomPickerControl"
+             x:DataType="viewModel:MainPageViewModel"
              x:Class="CustomPickerControl.MainPage">
 
     <ScrollView>
@@ -24,7 +27,29 @@
                 PickerHeightRequest="300"
                                             >
                 <customControls:DropDownButton.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="models:TitleValue">
+                        <HorizontalStackLayout Spacing="10">
+                            <Image Source="dotnet_bot.png" HeightRequest="20" WidthRequest="20" />
+                            <Label Padding="0,5,0,5" FontSize="18" Text="{Binding Title}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </customControls:DropDownButton.ItemTemplate>
+            </customControls:DropDownButton>
+
+
+            <customControls:DropDownButton 
+                Placeholder="--Select Item--"
+                ItemSource="{Binding Items1}"
+                IsLoading="{Binding IsLoading1}"
+                CurrentItem="{Binding CurrentItem1}"
+                IsDisplayPickerControl="{Binding IsDisplayPicker1}"
+                DisplayMember="Title"
+                x:Name="dropdownControl1"
+                OpenPickerCommand="{Binding OpenPicker1Command}"
+                PickerHeightRequest="300"
+                                            >
+                <customControls:DropDownButton.ItemTemplate>
+                    <DataTemplate x:DataType="models:TitleValue">
                         <HorizontalStackLayout Spacing="10">
                             <Image Source="dotnet_bot.png" HeightRequest="20" WidthRequest="20" />
                             <Label Padding="0,5,0,5" FontSize="18" Text="{Binding Title}" />

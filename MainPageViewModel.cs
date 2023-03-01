@@ -13,6 +13,7 @@ namespace CustomPickerControl
     public partial class MainPageViewModel : ObservableObject
     {
         public ObservableCollection<TitleValue> Items { get; set; } = new ObservableCollection<TitleValue>();
+        public ObservableCollection<TitleValue> Items1 { get; set; } = new ObservableCollection<TitleValue>();
 
 
         [ObservableProperty]
@@ -25,6 +26,16 @@ namespace CustomPickerControl
 
         [ObservableProperty]
         private bool _isDisplayPicker;
+
+        [ObservableProperty]
+        private TitleValue _currentItem1;
+
+        [ObservableProperty]
+        private bool _isLoading1;
+
+
+        [ObservableProperty]
+        private bool _isDisplayPicker1;
 
         public MainPageViewModel()
         {
@@ -54,6 +65,31 @@ namespace CustomPickerControl
             IsLoading = false;
 
             IsDisplayPicker = true;
+
+        }
+
+        [RelayCommand]
+        public async void OpenPicker1()
+        {
+            IsLoading1 = true;
+            // wait till api response is return
+
+            await Task.Delay(1000);
+
+            Items1.Clear();
+            Items1.Add(new TitleValue { Title = "Title 1", Value = "Value 1" });
+            Items1.Add(new TitleValue { Title = "Title 2", Value = "Value 2" });
+            Items1.Add(new TitleValue { Title = "Title 3", Value = "Value 3" });
+            Items1.Add(new TitleValue { Title = "Title 4", Value = "Value 4" });
+            Items1.Add(new TitleValue { Title = "Title 5", Value = "Value 5" });
+            Items1.Add(new TitleValue { Title = "Title 6", Value = "Value 6" });
+            Items1.Add(new TitleValue { Title = "Title 7", Value = "Value 7" });
+            Items1.Add(new TitleValue { Title = "Title 8", Value = "Value 8" });
+            Items1.Add(new TitleValue { Title = "Title 9", Value = "Value 9" });
+
+            IsLoading1 = false;
+
+            IsDisplayPicker1 = true;
 
         }
     }
